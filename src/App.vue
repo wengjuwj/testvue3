@@ -1,6 +1,7 @@
 <template>
   <div>
     <img alt="Vue logo" src="./assets/logo.png">
+    <div>尝试拉取</div>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
