@@ -485,7 +485,7 @@ const userNav = options => {
       parentId: 1,
       id: 7,
       meta: {
-        title: '工作台',
+        title: '数据统计',
         show: true
       },
       component: 'Workplace'
@@ -552,7 +552,19 @@ const userNav = options => {
       },
       component: 'AdvanceForm'
     },
-
+    // telecast
+    {
+      name: 'telecast',
+      parentId: 0,
+      id: 10010,
+      meta: {
+        icon: 'table',
+        title: '直播列表页',
+        show: true
+      },
+      redirect: '/telecast/table-list',
+      component: 'PageView'
+    },
     // list
     {
       name: 'list',

@@ -15,6 +15,62 @@ export const asyncRouterMap = [
     meta: { title: 'menu.home' },
     redirect: '/dashboard/workplace',
     children: [
+      // tele-cast
+      {
+        path: '/telecast',
+        name: 'telecast',
+        component: RouteView,
+        redirect: '/telecast/table-list',
+        meta: { title: 'menu.telecast', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/telecast/table-list/:pageNo([1-9]\\d*)?',
+            name: 'TableListWrapper',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/telecast/TableList'),
+            meta: { title: 'menu.telecast.table-list', keepAlive: true, permission: ['table'] }
+          },
+          {
+            path: '/telecast/basic-list',
+            name: 'BasicList',
+            component: () => import('@/views/telecast/BasicList'),
+            meta: { title: 'menu.list.basic-list', keepAlive: true, permission: ['table'] }
+          },
+          {
+            path: '/telecast/card',
+            name: 'CardList',
+            component: () => import('@/views/telecast/CardList'),
+            meta: { title: 'menu.telecast.card-list', keepAlive: true, permission: ['table'] }
+          },
+          {
+            path: '/telecast/search',
+            name: 'SearchList',
+            component: () => import('@/views/telecast/search/SearchLayout'),
+            redirect: '/telecast/search/article',
+            meta: { title: 'menu.telecast.search-list', keepAlive: true, permission: ['table'] },
+            children: [
+              {
+                path: '/telecast/search/article',
+                name: 'SearchArticles',
+                component: () => import('../views/telecast/search/Article'),
+                meta: { title: 'menu.telecast.search-list.articles', permission: ['table'] }
+              },
+              {
+                path: '/telecast/search/project',
+                name: 'SearchProjects',
+                component: () => import('../views/telecast/search/Projects'),
+                meta: { title: 'menu.list.search-list.projects', permission: ['table'] }
+              },
+              {
+                path: '/telecast/search/application',
+                name: 'SearchApplications',
+                component: () => import('../views/telecast/search/Applications'),
+                meta: { title: 'menu.telecast.search-list.applications', permission: ['table'] }
+              }
+            ]
+          }
+        ]
+      },
       // dashboard
       {
         path: '/dashboard',
